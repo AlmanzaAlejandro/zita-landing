@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Zita — Bot de WhatsApp con IA para negocios de servicios. Agenda citas automáticamente las 24 horas.">
+    <title>Zita — Tu negocio, siempre disponible</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-inner">
+                <a href="#" class="nav-logo">Zita<span>.</span></a>
+                <ul class="nav-links">
+                    <li><a href="#caracteristicas">Características</a></li>
+                    <li><a href="#como-funciona">Cómo funciona</a></li>
+                    <li><a href="#demo">Demo</a></li>
+                    <li><a href="#precios">Precios</a></li>
+                    <li><a href="https://wa.me/525520254471" class="nav-cta" target="_blank">Hablar con ventas</a></li>
+                </ul>
+                <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-close" id="closeMenu">
+            <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+        <a href="#caracteristicas" class="mobile-link" onclick="closeMobileMenu()">Características</a>
+        <a href="#como-funciona" class="mobile-link" onclick="closeMobileMenu()">Cómo funciona</a>
+        <a href="#demo" class="mobile-link" onclick="closeMobileMenu()">Demo</a>
+        <a href="#precios" class="mobile-link" onclick="closeMobileMenu()">Precios</a>
+        <a href="https://wa.me/525520254471" class="btn-primary" target="_blank" onclick="closeMobileMenu()">
+            Hablar con ventas
+        </a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-bg-grid"></div>
+        <div class="hero-glow"></div>
+        <div class="container">
+            <div class="hero-inner">
+                <div class="hero-content">
+                    <div class="hero-eyebrow">
+                        <span class="eyebrow-dot"></span>
+                        Bot de WhatsApp con IA
+                    </div>
+                    <h1>Tu negocio,<br><span class="gradient-text">siempre disponible.</span></h1>
+                    <p class="hero-subtitle">Zita agenda citas, cancela, reagenda y manda recordatorios por WhatsApp — automáticamente, las 24 horas. Sin contratar a nadie.</p>
+                    <div class="hero-actions">
+                        <a href="#demo" class="btn-primary">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                            Ver demo
+                        </a>
+                        <a href="#qr" class="btn-ghost">
+                            Probar el bot
+                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                    <div class="hero-trust">
+                        <span class="trust-item">✓ 14 días gratis</span>
+                        <span class="trust-item">✓ Sin contrato</span>
+                        <span class="trust-item">✓ Lista en 48 hrs</span>
+                    </div>
+                </div>
+
+                <!-- Phone mockup -->
+                <div class="hero-visual">
+                    <div class="phone-wrap">
+                        <div class="phone-frame">
+                            <div class="phone-notch"><div class="phone-pill"></div></div>
+                            <div class="wa-header">
+                                <div class="wa-avatar">✂️</div>
+                                <div>
+                                    <div class="wa-name">Zita · Asistente</div>
+                                    <div class="wa-status">● en línea</div>
+                                </div>
+                            </div>
+                            <div class="wa-body" id="waBody">
+                                <div class="wa-msg received" data-delay="400">¡Hola! 👋 Soy Zita. ¿En qué te ayudo?<div class="wa-time">10:32</div></div>
+                                <div class="wa-msg sent" data-delay="1400">Quiero cita mañana a las 4pm<div class="wa-time">10:32</div></div>
+                                <div class="wa-msg received" data-delay="2400">Perfecto 😊 ¿Tu nombre para la cita?<div class="wa-time">10:32</div></div>
+                                <div class="wa-msg sent" data-delay="3400">Carlos Ramírez<div class="wa-time">10:33</div></div>
+                                <div class="wa-msg received" data-delay="4400">✅ Aquí los detalles:<br>📅 Mañana · 4:00 pm<br>✂️ Corte + Barba<br>¿Confirmas? (Sí / No)<div class="wa-time">10:33</div></div>
+                                <div class="wa-msg sent" data-delay="5600">Sí<div class="wa-time">10:33</div></div>
+                                <div class="wa-msg received" data-delay="6600">🎉 ¡Cita confirmada, Carlos! Te mando un recordatorio 1 hora antes. ✨<div class="wa-time">10:34</div></div>
+                            </div>
+                        </div>
+                        <div class="float-badge float-top">
+                            <span class="badge-emoji">⚡</span>
+                            <div><div class="badge-val">&lt; 5 seg</div><div class="badge-lbl">Respuesta</div></div>
+                        </div>
+                        <div class="float-badge float-bottom">
+                            <span class="badge-emoji">🌙</span>
+                            <div><div class="badge-val">24 / 7</div><div class="badge-lbl">Disponible</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <div class="stats-bar">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item fade-up">
+                    <div class="stat-num gradient-text">↓ 40%</div>
+                    <div class="stat-lbl">Reducción de no-shows</div>
+                </div>
+                <div class="stat-item fade-up" style="transition-delay:.1s">
+                    <div class="stat-num gradient-text">+ 30%</div>
+                    <div class="stat-lbl">Más citas agendadas</div>
+                </div>
+                <div class="stat-item fade-up" style="transition-delay:.2s">
+                    <div class="stat-num gradient-text">2 hrs</div>
+                    <div class="stat-lbl">Liberadas al día</div>
+                </div>
+                <div class="stat-item fade-up" style="transition-delay:.3s">
+                    <div class="stat-num gradient-text">24 / 7</div>
+                    <div class="stat-lbl">Disponibilidad total</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROBLEM -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header fade-up">
+                <span class="eyebrow-tag">El problema</span>
+                <h2 class="section-title">El problema no es falta de clientes<br>— es falta de tiempo para contestar</h2>
+                <p class="section-sub">Cada mensaje sin respuesta es una cita que se va con la competencia.</p>
+            </div>
+            <div class="problem-grid">
+                <div class="problem-card fade-up">
+                    <div class="problem-icon">🔔</div>
+                    <h3>Mensajes a las 11pm</h3>
+                    <p>Los clientes buscan cita cuando tienen tiempo — no cuando tú estás disponible para contestar.</p>
+                </div>
+                <div class="problem-card fade-up" style="transition-delay:.1s">
+                    <div class="problem-icon">✂️</div>
+                    <h3>Estás cortando y no puedes contestar</h3>
+                    <p>Miras el teléfono al terminar y hay 5 mensajes sin respuesta. La mitad ya encontró otro lugar.</p>
+                </div>
+                <div class="problem-card fade-up" style="transition-delay:.2s">
+                    <div class="problem-icon">😤</div>
+                    <h3>El cliente no espera — se va</h3>
+                    <p>El 67% de los clientes elige al negocio que responde primero. La velocidad de respuesta es dinero.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VIDEO -->
+    <section class="video-section" id="demo">
+        <div class="container">
+            <div class="section-header text-center fade-up">
+                <span class="eyebrow-tag">Demo</span>
+                <h2 class="section-title">Ve Zita en acción</h2>
+                <p class="section-sub">Mira cómo Zita maneja citas y atiende clientes — sin que muevas un dedo.</p>
+            </div>
+            <div class="video-outer fade-up">
+                <div class="video-border-glow"></div>
+                <div class="video-wrapper">
+                    <video controls muted loop playsinline preload="metadata">
+                        <source src="Zitav2.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="section" id="caracteristicas">
+        <div class="container">
+            <div class="section-header text-center fade-up">
+                <span class="eyebrow-tag">Características</span>
+                <h2 class="section-title">Todo lo que hace por ti,<br>automáticamente</h2>
+                <p class="section-sub">Desde el primer "hola" hasta el recordatorio — Zita maneja toda la operación de citas.</p>
+            </div>
+            <div class="features-grid fade-up">
+                <div class="feature-card">
+                    <div class="feature-icon">📅</div>
+                    <h3>Agenda citas</h3>
+                    <p>Pregunta nombre, servicio, fecha y hora. Revisa disponibilidad real y confirma en segundos.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Cancela y reagenda</h3>
+                    <p>El cliente lo hace solo sin molestarte. Se actualiza el calendario automáticamente.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔔</div>
+                    <h3>Recordatorios</h3>
+                    <p>1 hora antes de cada cita, Zita manda un recordatorio que reduce no-shows hasta un 40%.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎙️</div>
+                    <h3>Notas de voz</h3>
+                    <p>Transcribe y entiende mensajes de audio. Tus clientes pueden hablar, no solo escribir.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🗓️</div>
+                    <h3>Google Calendar</h3>
+                    <p>Todas las citas aparecen en tu calendario. Ves todo desde el celular o la computadora.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Panel web</h3>
+                    <p>Dashboard con KPIs, calendario semanal, analytics y gestión completa de tu equipo.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👤</div>
+                    <h3>Clientes frecuentes</h3>
+                    <p>Saluda por nombre y pre-carga el último servicio. Experiencia personalizada desde el primer mensaje.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Comandos WhatsApp</h3>
+                    <p>Controla todo desde tu celular: "ver citas hoy", "cancelar #23", "bloquear 25 dic".</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Datos seguros</h3>
+                    <p>Cada negocio tiene datos completamente aislados. Los datos de tus clientes son solo tuyos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOR WHO -->
+    <section class="section who-section">
+        <div class="container">
+            <div class="section-header text-center fade-up">
+                <span class="eyebrow-tag">Para quién</span>
+                <h2 class="section-title">Funciona para cualquier<br>negocio de servicios</h2>
+            </div>
+            <div class="who-grid fade-up">
+                <div class="who-card"><span class="who-emoji">✂️</span><span>Barberías</span></div>
+                <div class="who-card"><span class="who-emoji">💅</span><span>Spas y estéticas</span></div>
+                <div class="who-card"><span class="who-emoji">🦷</span><span>Consultorios</span></div>
+                <div class="who-card"><span class="who-emoji">🏋️</span><span>Gimnasios</span></div>
+                <div class="who-card"><span class="who-emoji">🐾</span><span>Veterinarias</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section" id="como-funciona">
+        <div class="container">
+            <div class="section-header text-center fade-up">
+                <span class="eyebrow-tag">Instalación</span>
+                <h2 class="section-title">En 48 horas tu negocio<br>ya está automatizado</h2>
+                <p class="section-sub">Sin saber nada de tecnología. Me encargo de todo.</p>
+            </div>
+            <div class="steps-grid fade-up">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <h3>Tu número de WhatsApp</h3>
+                    <p>Me das acceso a tu número de WhatsApp de negocio. Solo toma 15 minutos configurarlo.</p>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <h3>Configuramos juntos</h3>
+                    <p>Me mandas tus servicios, precios y horarios por WhatsApp. Sin apps ni formularios complicados.</p>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <h3>Listo — a trabajar</h3>
+                    <p>Hacemos una cita de prueba y en menos de 48 horas Zita ya está atendiendo tus clientes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QR -->
+    <section class="section" id="qr">
+        <div class="container">
+            <div class="qr-box fade-up">
+                <div class="qr-glow"></div>
+                <div class="qr-content">
+                    <span class="eyebrow-tag">Prueba ahora</span>
+                    <h2 class="qr-title">Escanea y habla con<br><span class="gradient-text">Zita ahora mismo</span></h2>
+                    <p class="qr-sub">Manda "Hola" y comprueba tú mismo lo rápido y natural que responde. Sin registros, sin tarjeta.</p>
+                    <ul class="qr-list">
+                        <li>Responde en menos de 5 segundos</li>
+                        <li>Agenda citas como si fuera una persona real</li>
+                        <li>Prueba gratis por 14 días</li>
+                        <li>Sin contrato ni tarjeta de crédito</li>
+                    </ul>
+                    <a href="https://wa.me/52554427101785" class="wa-btn" target="_blank">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        Escribir por WhatsApp
+                    </a>
+                </div>
+                <div class="qr-visual">
+                    <div class="qr-frame">
+                        <div class="qr-corner tl"></div>
+                        <div class="qr-corner tr"></div>
+                        <div class="qr-corner bl"></div>
+                        <div class="qr-corner br"></div>
+                            <img src="./qr-code.png" width="190" height="190" alt="QR WhatsApp">
+                            <!-- TL finder -->
+                            <rect x="10" y="10" width="52" height="52" rx="6" fill="#111"/>
+                            <rect x="18" y="18" width="36" height="36" rx="3" fill="#fff"/>
+                            <rect x="26" y="26" width="20" height="20" rx="2" fill="#111"/>
+                            <!-- TR finder -->
+                            <rect x="128" y="10" width="52" height="52" rx="6" fill="#111"/>
+                            <rect x="136" y="18" width="36" height="36" rx="3" fill="#fff"/>
+                            <rect x="144" y="26" width="20" height="20" rx="2" fill="#111"/>
+                            <!-- BL finder -->
+                            <rect x="10" y="128" width="52" height="52" rx="6" fill="#111"/>
+                            <rect x="18" y="136" width="36" height="36" rx="3" fill="#fff"/>
+                            <rect x="26" y="144" width="20" height="20" rx="2" fill="#111"/>
+                            <!-- data dots -->
+                            <rect x="74" y="10" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="86" y="10" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="98" y="10" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="110" y="10" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="74" y="22" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="98" y="22" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="110" y="22" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="86" y="34" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="74" y="46" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="98" y="46" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="74" y="58" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="86" y="58" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="110" y="58" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="10" y="74" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="22" y="74" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="46" y="74" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="58" y="74" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="74" y="74" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="86" y="74" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="110" y="74" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="128" y="74" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="140" y="74" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="152" y="74" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="10" y="86" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="46" y="86" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="74" y="86" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="98" y="86" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="128" y="86" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="164" y="86" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="22" y="98" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="34" y="98" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="58" y="98" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="86" y="98" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="110" y="98" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="140" y="98" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="152" y="98" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="10" y="110" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="34" y="110" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="74" y="110" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="98" y="110" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="128" y="110" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="152" y="110" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="74" y="128" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="86" y="128" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="110" y="128" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="128" y="128" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="152" y="128" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="164" y="128" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="74" y="140" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="98" y="140" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="116" y="140" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="140" y="140" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="74" y="152" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="86" y="152" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="116" y="152" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="128" y="152" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="152" y="152" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="74" y="164" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="98" y="164" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="140" y="164" width="8" height="8" rx="1" fill="#111"/>
+                            <rect x="164" y="164" width="8" height="8" rx="1" fill="#111"/>
+                        </svg>
+                    </div>
+                    <p class="qr-hint">Escanea con la cámara de tu celular</p>
+                    <p class="qr-or">— o —</p>
+                    <p class="qr-number">+52 442 710 1785</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="section" id="precios">
+        <div class="container">
+            <div class="section-header text-center fade-up">
+                <span class="eyebrow-tag">Precios</span>
+                <h2 class="section-title">Una inversión que<br>se paga sola</h2>
+                <p class="section-sub">Una cita extra a la semana ya cubre el costo mensual. El resto es ganancia.</p>
+            </div>
+
+            <!-- ROI bar -->
+            <div class="roi-bar fade-up">
+                <div class="roi-item">
+                    <span class="roi-label">Recepcionista de medio tiempo</span>
+                    <span class="roi-cost roi-cost-bad">~$6,000 MXN/mes</span>
+                </div>
+                <div class="roi-divider">vs</div>
+                <div class="roi-item">
+                    <span class="roi-label">Zita · disponible 24/7, sin días libres</span>
+                    <span class="roi-cost roi-cost-good">desde $799 MXN/mes</span>
+                </div>
+            </div>
+
+            <div class="plans-grid fade-up">
+
+                <!-- STARTER -->
+                <div class="plan-card">
+                    <div class="plan-head">
+                        <div class="plan-badge-placeholder"></div>
+                        <div class="plan-name">Starter</div>
+                        <div class="plan-price-wrap">
+                            <div class="plan-price">
+                                <span class="plan-cur">$</span>
+                                <span class="plan-num">799</span>
+                                <span class="plan-period">MXN/mes</span>
+                            </div>
+                            <div class="plan-activation">+ $1,500 MXN activación única</div>
+                        </div>
+                        <div class="plan-ideal">Barbería o estética pequeña · dueño solo</div>
+                        <div class="plan-limits">1 empleado · 1 sucursal · citas ilimitadas</div>
+                    </div>
+                    <div class="plan-divider"></div>
+                    <ul class="plan-features">
+                        <li class="feat-yes"><span class="feat-icon">✓</span> WhatsApp AI receptionist 24/7</li>
+                        <li class="feat-yes"><span class="feat-icon">✓</span> Agenda, reagenda y cancela</li>
+                        <li class="feat-yes"><span class="feat-icon">✓</span> Recordatorios automáticos</li>
+                        <li class="feat-yes"><span class="feat-icon">✓</span> Notas de voz con IA (Whisper)</li>
+                        <li class="feat-yes"><span class="feat-icon">✓</span> Google Calendar integrado</li>
+                        <li class="feat-yes"><span class="feat-icon">✓</span> Panel de administración web</li>
+                        <li class="feat-yes"><span class="feat-icon">✓</span> Soporte por WhatsApp</li>
+                        <li class="feat-no"><span class="feat-icon">—</span> Dashboard de métricas y analytics</li>
+                        <li class="feat-no"><span class="feat-icon">—</span> Multi-empleado (más de 1)</li>
+                        <li class="feat-no"><span class="feat-icon">—</span> Lista de espera + auto-fill</li>
+                    </ul>
+                    <a href="https://wa.me/525520254471?text=Hola%2C%20quiero%20contratar%20Zita%20%E2%80%94%20Plan%20Starter%20%28%24799%20MXN%2Fmes%29" class="plan-cta" target="_blank">Empezar prueba gratis</a>
+                </div>
+
+                <!-- PRO -->
+                <div class="plan-card plan-popular">
+                    <div class="plan-head">
+                        <div class="plan-badge popular-badge">⭐ Más popular</div>
+                        <div class="plan-name">Pro</div>
+                        <div class="plan-price-wrap">
+                            <div class="plan-price">
+                                <span class="plan-cur">$</span>
+                                <span class="plan-num">1,299</span>
+                                <span class="plan-period">MXN/mes</span>
+                            </div>
+                            <div class="plan-activation">+ $2,000 MXN activación única</div>
+                        </div>
+                        <div class="plan-ideal">Barbería con staff · spa · consultorio</div>
+                        <div class="plan-limits">Hasta 5 empleados · 1 sucursal · citas ilimitadas</div>
+                    </div>
+                    <div class="plan-divider"></div>
+                    <ul class="plan-features">
+                        <li class="feat-yes"><span class="feat-icon">✓</span> Todo lo de Starter</li>
+                        <li class="feat-yes"><span class="feat-icon">✓</span> Dashboard con métricas y analytics</li>
+                        <li class="feat-yes"><span class="feat-icon">✓</span> Historial de clientes (CRM básico)</li>
+                        <li class="feat-yes"><span class="feat-icon">✓</span> Lista de espera automática</li>
+                        <li class="feat-yes"><span class="feat-icon">✓</span> Auto-fill de huecos por cancelación</li>
+                        <li class="feat-yes"><span class="feat-icon">✓</span> Reportes de revenue recuperado</li>
+                        <li class="feat-yes"><span class="feat-icon">✓</span> Soporte prioritario vía WhatsApp</li>
+                        <li class="feat-no"><span class="feat-icon">—</span> Revenue Copilot con IA</li>
+                        <li class="feat-no"><span class="feat-icon">—</span> Campañas de reactivación</li>
+                    </ul>
+                    <a href="https://wa.me/525520254471?text=Hola%2C%20quiero%20contratar%20Zita%20%E2%80%94%20Plan%20Pro%20%28%241%2C299%20MXN%2Fmes%29" class="plan-cta plan-cta-gold" target="_blank">Empezar prueba gratis</a>
+                </div>
+
+                <!-- ÉLITE (coming soon) -->
+                <div class="plan-card plan-soon">
+                    <div class="plan-head">
+                        <div class="plan-badge soon-badge">Próximamente</div>
+                        <div class="plan-name">Élite</div>
+                        <div class="plan-price-wrap">
+                            <div class="plan-price plan-price-muted">
+                                <span class="plan-cur">$</span>
+                                <span class="plan-num">1,999</span>
+                                <span class="plan-period">MXN/mes</span>
+                            </div>
+                        </div>
+                        <div class="plan-ideal">Clínicas · cadenas · multi-staff</div>
+                        <div class="plan-limits">Empleados ilimitados · multi-sucursal</div>
+                    </div>
+                    <div class="plan-divider"></div>
+                    <ul class="plan-features plan-features-muted">
+                        <li class="feat-soon">Todo lo de Pro</li>
+                        <li class="feat-soon">Revenue Copilot — insights con IA cada día</li>
+                        <li class="feat-soon">Campañas de reactivación de clientes</li>
+                        <li class="feat-soon">Multi-sucursal (2 incluidas)</li>
+                        <li class="feat-soon">Recordatorios avanzados configurables</li>
+                        <li class="feat-soon">Onboarding VIP · SLA garantizado</li>
+                    </ul>
+                    <div x-data="{ sent: false, email: '' }" class="email-capture">
+                        <div x-show="!sent" class="email-capture-form">
+                            <input type="email" x-model="email" class="email-input" placeholder="tu@email.com">
+                            <button class="email-btn" @click="if(email){ sent = true }">Avísame</button>
+                        </div>
+                        <p x-show="sent" class="email-confirm" style="display:none">
+                            ¡Listo! Te avisamos cuando esté disponible. 🎉
+                        </p>
+                    </div>
+                </div>
+
+            </div><!-- /plans-grid -->
+
+            <!-- Activation fee explainer -->
+            <div class="activation-note fade-up">
+                <div class="activation-note-inner">
+                    <span class="activation-icon">🛠️</span>
+                    <div>
+                        <strong>¿Qué incluye la activación?</strong>
+                        Configuración de tu número de WhatsApp en nuestra plataforma, alta de servicios y horarios, prueba completa del flujo de citas y capacitación en el panel de administración. Es un trabajo de 3–4 horas que haces una sola vez.
+                    </div>
+                </div>
+            </div>
+
+            <p class="plans-footnote">14 días gratis · Sin contrato · Cancela cuando quieras</p>
+
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="section contact-section" id="contacto">
+        <div class="container">
+            <div class="contact-box fade-up">
+                <div class="contact-content">
+                    <span class="eyebrow-tag">Contacto</span>
+                    <h2 class="contact-title">¿Listo para empezar?</h2>
+                    <p class="contact-sub">Escríbenos por WhatsApp y te tenemos funcionando en menos de 48 horas.</p>
+                    <a href="https://wa.me/525520254471?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Zita" class="wa-btn" target="_blank">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        Hablar por WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header text-center fade-up">
+                <span class="eyebrow-tag">FAQ</span>
+                <h2 class="section-title">Preguntas frecuentes</h2>
+            </div>
+            <div class="faq-list fade-up">
+                <div class="faq-item">
+                    <button class="faq-q">¿Mis clientes van a saber que es un bot? <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                    <div class="faq-a"><div class="faq-a-inner">El bot habla exactamente como un humano, con contexto y naturalidad. La mayoría no saben que es automático al principio. Puedes nombrarlo como quieras.</div></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q">¿Y si el bot se equivoca con una cita? <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                    <div class="faq-a"><div class="faq-a-inner">El cliente confirma todos los detalles antes de que se guarde. Además, ves todas las citas en tu WhatsApp y en el panel web. Si algo está mal, lo corriges con un solo comando.</div></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q">Ya tengo a alguien que me ayuda con eso <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                    <div class="faq-a"><div class="faq-a-inner">Zita no reemplaza a tu equipo — libera su tiempo para atender en persona en lugar de contestar mensajes. Tu equipo se enfoca en dar un excelente servicio.</div></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q">¿Qué pasa si quiero cancelar? <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                    <div class="faq-a"><div class="faq-a-inner">Sin contrato, cancelas cuando quieras. Sin preguntas, sin penalizaciones. Nuestro objetivo es que te quedes porque ves resultados, no porque estás atado.</div></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q">¿Son seguros los datos de mis clientes? <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                    <div class="faq-a"><div class="faq-a-inner">Cada negocio tiene su propio espacio de datos completamente aislado. Los datos de tus clientes son solo tuyos y nunca se comparten con otros negocios.</div></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q">¿Cuánto tarda la instalación? <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                    <div class="faq-a"><div class="faq-a-inner">Menos de 48 horas. Tú solo me mandas tu número, servicios y horarios — yo me encargo del resto. Sin necesidad de saber nada de tecnología.</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <div class="footer-logo">Zita<span>.</span></div>
+                    <p>Tu negocio, siempre disponible. Bot de WhatsApp con IA para negocios de servicios en México.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Producto</h4>
+                    <a href="#caracteristicas">Características</a>
+                    <a href="#como-funciona">Cómo funciona</a>
+                    <a href="#demo">Demo</a>
+                    <a href="#precios">Precios</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Contacto</h4>
+                    <a href="https://wa.me/525520254471" target="_blank">WhatsApp</a>
+                    <a href="mailto:hola@zita.mx">hola@zita.mx</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2025 Zita · Todos los derechos reservados</span>
+                <span>Hecho con ❤️ en México 🇲🇽</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp button -->
+    <a href="https://wa.me/525520254471" class="wa-float" target="_blank" aria-label="WhatsApp">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <script src="main.js"></script>
+</body>
+</html>
